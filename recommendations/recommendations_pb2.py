@@ -15,7 +15,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15recommendations.proto\"_\n\x15RecommendationRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\x12 \n\x08\x63\x61tegory\x18\x02 \x01(\x0e\x32\x0e.MovieCategory\x12\x13\n\x0bmax_results\x18\x05 \x01(\x05\"0\n\x13MovieRecommendation\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\"G\n\x16RecommendationResponse\x12-\n\x0frecommendations\x18\x01 \x03(\x0b\x32\x14.MovieRecommendation*W\n\rMovieCategory\x12\x0b\n\x07MYSTERY\x10\x00\x12\x13\n\x0fSCIENCE_FICTION\x10\x01\x12\n\n\x06\x43OMEDY\x10\x02\x12\x0c\n\x08THRILLER\x10\x03\x12\n\n\x06\x41\x43TION\x10\x04\x32O\n\x0fRecommendations\x12<\n\tRecommend\x12\x16.RecommendationRequest\x1a\x17.RecommendationResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15recommendations.proto\"_\n\x15RecommendationRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\x12 \n\x08\x63\x61tegory\x18\x02 \x01(\x0e\x32\x0e.MovieCategory\x12\x13\n\x0bmax_results\x18\x05 \x01(\x05\"0\n\x13MovieRecommendation\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\"G\n\x16RecommendationResponse\x12-\n\x0frecommendations\x18\x01 \x03(\x0b\x32\x14.MovieRecommendation*`\n\rMovieCategory\x12\x0b\n\x07MYSTERY\x10\x00\x12\x13\n\x0fSCIENCE_FICTION\x10\x01\x12\n\n\x06\x43OMEDY\x10\x02\x12\x0c\n\x08THRILLER\x10\x03\x12\n\n\x06\x41\x43TION\x10\x04\x12\x07\n\x03\x41LL\x10\x05\x32O\n\x0fRecommendations\x12<\n\tRecommend\x12\x16.RecommendationRequest\x1a\x17.RecommendationResponseb\x06proto3')
 
 _MOVIECATEGORY = DESCRIPTOR.enum_types_by_name['MovieCategory']
 MovieCategory = enum_type_wrapper.EnumTypeWrapper(_MOVIECATEGORY)
@@ -24,6 +24,7 @@ SCIENCE_FICTION = 1
 COMEDY = 2
 THRILLER = 3
 ACTION = 4
+ALL = 5
 
 
 _RECOMMENDATIONREQUEST = DESCRIPTOR.message_types_by_name['RecommendationRequest']
@@ -55,13 +56,13 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _MOVIECATEGORY._serialized_start=245
-  _MOVIECATEGORY._serialized_end=332
+  _MOVIECATEGORY._serialized_end=341
   _RECOMMENDATIONREQUEST._serialized_start=25
   _RECOMMENDATIONREQUEST._serialized_end=120
   _MOVIERECOMMENDATION._serialized_start=122
   _MOVIERECOMMENDATION._serialized_end=170
   _RECOMMENDATIONRESPONSE._serialized_start=172
   _RECOMMENDATIONRESPONSE._serialized_end=243
-  _RECOMMENDATIONS._serialized_start=334
-  _RECOMMENDATIONS._serialized_end=413
+  _RECOMMENDATIONS._serialized_start=343
+  _RECOMMENDATIONS._serialized_end=422
 # @@protoc_insertion_point(module_scope)

@@ -8,6 +8,7 @@ from recommendations_pb2 import (
   MovieRecommendation,
   RecommendationResponse,
 )
+all_caterogies = [MovieCategory.MYSTERY, MovieCategory.COMEDY, MovieCategory.ACTION, MovieCategory.THRILLER, MovieCategory.SCIENCE_FICTION]
 
 movies_by_category = {
   MovieCategory.MYSTERY: [
@@ -34,6 +35,8 @@ movies_by_category = {
     MovieRecommendation(id=13, title="Extraction"),
     MovieRecommendation(id=14, title="The Hunger Games"),
     MovieRecommendation(id=15, title="Snowpiercer"),
+  ],
+  MovieCategory.ALL: [
   ]
 }
 
@@ -41,11 +44,20 @@ class RecommendationService(
   recommendations_pb2_grpc.RecommendationsServicer):
 
   def Recommend(self, request, context):
+    all_movies = []
     if request.category not in movies_by_category:
       context.abort(grpc.StatusCode.NOT_FOUND, "Category not found")
-    movies_for_category = movies_by_category[request.category]
-    num_results = min(request.max_results, len(movies_for_category))
-    movies_to_recommend = random.sample(movies_for_category, num_results)
+    if request.category == 5:
+      for i in range(len(all_caterogies)):
+        request.category = all_caterogies[i]
+        movies_for_category = movies_by_category[request.category]
+        num_results = min(request.max_results, len(movies_for_category))
+        all_movies += random.sample(movies_for_category, num_results)
+      movies_to_recommend = all_movies
+    else:
+      movies_for_category = movies_by_category[request.category]
+      num_results = min(request.max_results, len(movies_for_category))
+      movies_to_recommend = random.sample(movies_for_category, num_results)
     return RecommendationResponse(recommendations=movies_to_recommend)
 
 def serve():
