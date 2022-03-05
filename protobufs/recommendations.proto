@@ -1,22 +1,24 @@
 syntax = "proto3";
-enum BookCategory {
-   MYSTERY = 0;
+enum MovieCategory {
+    MYSTERY = 0;
     SCIENCE_FICTION = 1;
-    SELF_HELP = 2;
+    COMEDY = 2;
+    THRILLER = 3;
+    ACTION = 4;
 }
 
 message RecommendationRequest {
     int32 user_id = 1;
-    BookCategory category = 2;
-    int32 max_results = 3;
+    MovieCategory category = 2;
+    int32 max_results = 5;
 }
 
-message BookRecommendation {
+message MovieRecommendation {
     int32 id = 1;
     string title = 2;
 }
 message RecommendationResponse {
-    repeated BookRecommendation recommendations = 1;
+    repeated MovieRecommendation recommendations = 1;
 }
 
 service Recommendations {

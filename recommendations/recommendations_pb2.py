@@ -15,17 +15,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15recommendations.proto\"^\n\x15RecommendationRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\x12\x1f\n\x08\x63\x61tegory\x18\x02 \x01(\x0e\x32\r.BookCategory\x12\x13\n\x0bmax_results\x18\x03 \x01(\x05\"/\n\x12\x42ookRecommendation\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\"F\n\x16RecommendationResponse\x12,\n\x0frecommendations\x18\x01 \x03(\x0b\x32\x13.BookRecommendation*?\n\x0c\x42ookCategory\x12\x0b\n\x07MYSTERY\x10\x00\x12\x13\n\x0fSCIENCE_FICTION\x10\x01\x12\r\n\tSELF_HELP\x10\x02\x32O\n\x0fRecommendations\x12<\n\tRecommend\x12\x16.RecommendationRequest\x1a\x17.RecommendationResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15recommendations.proto\"_\n\x15RecommendationRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x05\x12 \n\x08\x63\x61tegory\x18\x02 \x01(\x0e\x32\x0e.MovieCategory\x12\x13\n\x0bmax_results\x18\x05 \x01(\x05\"0\n\x13MovieRecommendation\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\"G\n\x16RecommendationResponse\x12-\n\x0frecommendations\x18\x01 \x03(\x0b\x32\x14.MovieRecommendation*W\n\rMovieCategory\x12\x0b\n\x07MYSTERY\x10\x00\x12\x13\n\x0fSCIENCE_FICTION\x10\x01\x12\n\n\x06\x43OMEDY\x10\x02\x12\x0c\n\x08THRILLER\x10\x03\x12\n\n\x06\x41\x43TION\x10\x04\x32O\n\x0fRecommendations\x12<\n\tRecommend\x12\x16.RecommendationRequest\x1a\x17.RecommendationResponseb\x06proto3')
 
-_BOOKCATEGORY = DESCRIPTOR.enum_types_by_name['BookCategory']
-BookCategory = enum_type_wrapper.EnumTypeWrapper(_BOOKCATEGORY)
+_MOVIECATEGORY = DESCRIPTOR.enum_types_by_name['MovieCategory']
+MovieCategory = enum_type_wrapper.EnumTypeWrapper(_MOVIECATEGORY)
 MYSTERY = 0
 SCIENCE_FICTION = 1
-SELF_HELP = 2
+COMEDY = 2
+THRILLER = 3
+ACTION = 4
 
 
 _RECOMMENDATIONREQUEST = DESCRIPTOR.message_types_by_name['RecommendationRequest']
-_BOOKRECOMMENDATION = DESCRIPTOR.message_types_by_name['BookRecommendation']
+_MOVIERECOMMENDATION = DESCRIPTOR.message_types_by_name['MovieRecommendation']
 _RECOMMENDATIONRESPONSE = DESCRIPTOR.message_types_by_name['RecommendationResponse']
 RecommendationRequest = _reflection.GeneratedProtocolMessageType('RecommendationRequest', (_message.Message,), {
   'DESCRIPTOR' : _RECOMMENDATIONREQUEST,
@@ -34,12 +36,12 @@ RecommendationRequest = _reflection.GeneratedProtocolMessageType('Recommendation
   })
 _sym_db.RegisterMessage(RecommendationRequest)
 
-BookRecommendation = _reflection.GeneratedProtocolMessageType('BookRecommendation', (_message.Message,), {
-  'DESCRIPTOR' : _BOOKRECOMMENDATION,
+MovieRecommendation = _reflection.GeneratedProtocolMessageType('MovieRecommendation', (_message.Message,), {
+  'DESCRIPTOR' : _MOVIERECOMMENDATION,
   '__module__' : 'recommendations_pb2'
-  # @@protoc_insertion_point(class_scope:BookRecommendation)
+  # @@protoc_insertion_point(class_scope:MovieRecommendation)
   })
-_sym_db.RegisterMessage(BookRecommendation)
+_sym_db.RegisterMessage(MovieRecommendation)
 
 RecommendationResponse = _reflection.GeneratedProtocolMessageType('RecommendationResponse', (_message.Message,), {
   'DESCRIPTOR' : _RECOMMENDATIONRESPONSE,
@@ -52,14 +54,14 @@ _RECOMMENDATIONS = DESCRIPTOR.services_by_name['Recommendations']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _BOOKCATEGORY._serialized_start=242
-  _BOOKCATEGORY._serialized_end=305
+  _MOVIECATEGORY._serialized_start=245
+  _MOVIECATEGORY._serialized_end=332
   _RECOMMENDATIONREQUEST._serialized_start=25
-  _RECOMMENDATIONREQUEST._serialized_end=119
-  _BOOKRECOMMENDATION._serialized_start=121
-  _BOOKRECOMMENDATION._serialized_end=168
-  _RECOMMENDATIONRESPONSE._serialized_start=170
-  _RECOMMENDATIONRESPONSE._serialized_end=240
-  _RECOMMENDATIONS._serialized_start=307
-  _RECOMMENDATIONS._serialized_end=386
+  _RECOMMENDATIONREQUEST._serialized_end=120
+  _MOVIERECOMMENDATION._serialized_start=122
+  _MOVIERECOMMENDATION._serialized_end=170
+  _RECOMMENDATIONRESPONSE._serialized_start=172
+  _RECOMMENDATIONRESPONSE._serialized_end=243
+  _RECOMMENDATIONS._serialized_start=334
+  _RECOMMENDATIONS._serialized_end=413
 # @@protoc_insertion_point(module_scope)
