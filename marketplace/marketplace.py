@@ -12,6 +12,5 @@ recommendations_client = RecommendationsStub(recommendations_channel)
 @app.route("/")
 def render_homepage():
   recommendations_request = RecommendationRequest(user_id=1, category=MovieCategory.ALL, max_results=20)
-
   recommendations_response = recommendations_client.Recommend(recommendations_request)
   return render_template("homepage.html", recommendations=recommendations_response.recommendations,)
