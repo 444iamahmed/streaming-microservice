@@ -11,7 +11,7 @@
             <li>{{ book.title }}</li>
             {% endfor %}
         </ul>
-        <button class="btn btn-success" onclick="location.href = 'recommendations.html'">
+        <aref class="btn btn-success" href="{{url_for('recommendations.html')}}">
             Recommendations</button>
         <button class="btn btn-success" onclick=" window.open('http://google.com','_blank')"> My List</button>
     </body>
