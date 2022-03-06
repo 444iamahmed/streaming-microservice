@@ -4,12 +4,21 @@ import grpc
 import cgi
 from recommendations_pb2 import MovieCategory, RecommendationRequest
 from recommendations_pb2_grpc import RecommendationsStub
+from movie_list.movie_list_pb2 import Movie, ListItem, MovieListRequest
+from movie_list.movie_list_pb2_grpc import ListStub
+
+
 app = Flask(__name__)
 app.debug = True
 recommendations_host = os.getenv("RECOMMENDATIONS_HOST", "localhost")
 recommendations_channel = grpc.insecure_channel(f"{recommendations_host}:50051")
 categories = ['Mystery','Science Fiction','Comedy','Thriller','Action']
 recommendations_client = RecommendationsStub(recommendations_channel)
+
+list_host = os.getenv("LIST_HOST", "localhost")
+list_channel = grpc.insecure_channel(f"{list_host}:50051")
+list_client = ListStub(list_channel)
+
 
 @app.route("/")
 def render_homepage():
@@ -31,5 +40,21 @@ def send_data():
         return render_template("show_recommendations.html", recommendations=recommendations_response.recommendations, )
     else:
         return render_template("recommendations.html")
+
+
+@app.route("/list")
+def render_list():
+  movie_list_request = MovieListRequest(user_id=1)
+  movie_list_response = list_client.GetList(movie_list_request)
+  return render_template("list.html", movie_list=movie_list_response.movie_list,)
+
+@app.route("/remove-from-list", methods=['GET'])
+def remove_from_list():
+  print(request.form['movie'])
+  return render_template("list.html")
+
+  
+
+
 if __name__ == "__main__":
     app.run()

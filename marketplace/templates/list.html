@@ -1,0 +1,16 @@
+<!-- homepage.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Netflix</title>
+    </head>
+    <body>
+        <h1>Movies you may like</h1>
+        <ul>
+            {% for movie in movie_list %}
+            <li>{{ movie.title }}</li>
+            <button name="movie" onclick="{{url_for('remove_from_list')}}" value="{{movie.title}}">Remove</button>
+            {% endfor %}
+        </ul>
+    </body>
+
