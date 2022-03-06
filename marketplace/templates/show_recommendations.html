@@ -1,0 +1,15 @@
+<!-- show_recommendations.html -->
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Netflix</title>
+    </head>
+    <body>
+        <h1>Recommendations</h1>
+        <ul>
+            {% for book in recommendations %}
+            <li>{{ book.title }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+
