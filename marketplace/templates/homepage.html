@@ -9,7 +9,7 @@
         <ul>
             {% for movie in recommendations %}
             <li>{{ movie.title }}</li>
-            <a href = "{{url_for('add_to_list', movieid = movie.id)}}">Add To List</a>
+            <a href = "{{url_for('add_to_list', movieid = movie.id, movietitle = movie.title)}}">Add To List</a>
             {% endfor %}
         </ul>
         <a href = "{{url_for('dropdown')}}">Recommendations</a>

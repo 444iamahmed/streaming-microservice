@@ -7,8 +7,9 @@
     <body>
         <h1>Recommendations</h1>
         <ul>
-            {% for book in recommendations %}
-            <li>{{ book.title }}</li>
+            {% for movie in recommendations %}
+            <li>{{ movie.title }}</li>
+            <a href = "{{url_for('add_to_list', movieid = movie.id, movietitle = movie.title)}}">Add To List</a>
             {% endfor %}
         </ul>
     </body>
