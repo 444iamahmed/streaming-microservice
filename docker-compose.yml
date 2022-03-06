@@ -7,6 +7,7 @@ services:
             dockerfile: marketplace/Dockerfile
         environment:
             RECOMMENDATIONS_HOST: recommendations
+            LIST_HOST: movie_list
         image: marketplace
         networks:
             - microservices
@@ -18,6 +19,14 @@ services:
             context: .
             dockerfile: recommendations/Dockerfile
         image: recommendations
+        networks:
+            - microservices
+
+    movie_list:
+        build:
+            context: .
+            dockerfile: movie_list/Dockerfile
+        image: movie_list
         networks:
             - microservices
 

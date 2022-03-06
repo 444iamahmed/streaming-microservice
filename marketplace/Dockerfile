@@ -12,4 +12,5 @@ RUN python -m grpc_tools.protoc -I ../protobufs --python_out=. \
 
 EXPOSE 5000
 ENV FLASK_APP=marketplace.py
+ENV FLASK_ENV=development
 ENTRYPOINT [ "flask", "run", "--host=0.0.0.0"]

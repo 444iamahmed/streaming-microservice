@@ -21,6 +21,8 @@ spec:
                   env:
                       - name: RECOMMENDATIONS_HOST
                         value: recommendations
+                      - name: LIST_HOST
+                        value: movie-list
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -42,6 +44,27 @@ spec:
                 - name: recommendations
                   image: wajeehamalik/recommendations:0.1
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: movie-list
+    labels:
+        app: movie-list
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: movie-list
+    template:
+        metadata:
+            labels:
+                app: movie-list
+        spec:
+            containers:
+                - name: movie-list
+                  image: wajeehamalik/movie-list:0.1
+---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -66,3 +89,17 @@ spec:
         - protocol: TCP
           port: 5000
           targetPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: movie-list
+spec:
+    selector:
+        app: movie-list
+    ports:
+        - protocol: TCP
+          port: 50052
+          targetPort: 50052
+---
