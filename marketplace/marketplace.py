@@ -4,8 +4,8 @@ import grpc
 import cgi
 from recommendations_pb2 import MovieCategory, RecommendationRequest
 from recommendations_pb2_grpc import RecommendationsStub
-from movie_list.movie_list_pb2 import Movie, ListItem, MovieListRequest
-from movie_list.movie_list_pb2_grpc import ListStub
+from movie_list_pb2 import Movie, ListItem, MovieListRequest
+from movie_list_pb2_grpc import ListStub
 
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ categories = ['Mystery','Science Fiction','Comedy','Thriller','Action']
 recommendations_client = RecommendationsStub(recommendations_channel)
 
 list_host = os.getenv("LIST_HOST", "localhost")
-list_channel = grpc.insecure_channel(f"{list_host}:50051")
+list_channel = grpc.insecure_channel(f"{list_host}:50052")
 list_client = ListStub(list_channel)
 
 
@@ -44,16 +44,14 @@ def send_data():
 
 @app.route("/list")
 def render_list():
-  movie_list_request = MovieListRequest(user_id=1)
-  movie_list_response = list_client.GetList(movie_list_request)
-  return render_template("list.html", movie_list=movie_list_response.movie_list,)
+      movie_list_request = MovieListRequest(user_id=1)
+      movie_list_response = list_client.GetList(movie_list_request)
+      return render_template("list.html", movie_list=movie_list_response.movie_list,)
 
-@app.route("/remove-from-list", methods=['GET'])
-def remove_from_list():
-  print(request.form['movie'])
-  return render_template("list.html")
-
-  
+@app.route("/remove-from-list/<movieid>", methods=['GET', 'POST'])
+def remove_from_list(movieid):
+    list_client.RemoveFromList(ListItem(user_id = 1, movie = Movie(id = int(movieid))))
+    return render_list()
 
 
 if __name__ == "__main__":

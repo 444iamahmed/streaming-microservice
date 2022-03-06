@@ -82,7 +82,7 @@ def serve():
 
     )
 
-    server.add_insecure_port("[::]:50051")
+    server.add_insecure_port("[::]:50052")
 
     server.start()
 

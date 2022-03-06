@@ -6,11 +6,13 @@
     </head>
     <body>
         <h1>Movies you may like</h1>
+        <form>
         <ul>
             {% for movie in movie_list %}
             <li>{{ movie.title }}</li>
-            <button name="movie" onclick="{{url_for('remove_from_list')}}" value="{{movie.title}}">Remove</button>
+            <a href = "{{url_for('remove_from_list', movieid = movie.id)}}">Remove</a>
             {% endfor %}
         </ul>
+        </form>
     </body>
 
