@@ -33,3 +33,7 @@ for docker:
 
 docker-compose build
 docker-compose up
+
+for kubernetes:
+
+kubectl apply -f kubernetes.yml
