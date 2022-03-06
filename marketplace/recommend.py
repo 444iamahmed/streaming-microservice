@@ -13,7 +13,6 @@ app = Flask(__name__)
 app.debug = True
 @app.route('/', methods=['GET'])
 def dropdown():
-
     return render_template('recommendations.html', categories = categories)
 
 @app.route('/send_data', methods=['GET','POST'])
