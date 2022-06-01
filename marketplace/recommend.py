@@ -25,5 +25,5 @@ def send_data():
         return render_template("show_recommendations.html", recommendations=recommendations_response.recommendations, )
     else:
         return render_template("recommendations.html")
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+app.run()

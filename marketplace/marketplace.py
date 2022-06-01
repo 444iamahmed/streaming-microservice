@@ -58,5 +58,5 @@ def add_to_list(movieid, movietitle):
     list_client.AddToList(ListItem(user_id = 1, movie = Movie(id = int(movieid), title = movietitle)))
     return render_list()
 
-if __name__ == "__main__":
-    app.run()
+# if __name__ == "__main__":
+app.run()
